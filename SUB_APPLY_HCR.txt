@@ -1,0 +1,71 @@
+   Sub Apply_HCR()
+        '--------------------------------------------------------------
+        '  Purpose:  Takes Abundance Index and calculates the TAC for AABM fisheries:
+        '            
+        '  Arguments: Yr% = Year of simulation run.
+        '
+        '  Inputs:    RelAbund()
+        '             NumAbundanceIndex
+        '
+        '  Called By: ??
+        '
+        '  Output:    AABM_TAC()
+        '
+        '  Externals: None
+        '
+        '--------------------------------------------------------------
+
+        Dim AABMfishery As Integer
+        Dim AABM_TAC(NumAbundanceIndex) AS Integer
+
+        
+        For AABMfishery = 1 To NumAbundanceIndex
+
+                If AABMfishery=1 Then
+
+                    If RelAbund(AABMfishery) >= 1 Then
+                    'SEAK
+                        AABM_TAC(1)=242381*RelAbund(AABMfishery) -114898
+                    Elseif RelAbund(AABMfishery) >= 1.205 Then
+                    'SEAK
+                        AABM_TAC(1)=151768*RelAbund(AABMfishery) + 16933 
+                    Elseif RelAbund(AABMfishery) >= 1.505 Then
+                    'SEAK
+                        AABM_TAC(1)=164327*RelAbund(AABMfishery) + 17072
+                    Else
+                    'SEAK
+                        AABM_TAC(1)=110516*RelAbund(AABMfishery) + 17003
+                    End If
+                End If
+
+        
+                If AABMfishery=2 Then
+                    If RelAbund(AABMfishery) >= 1.505 Then
+                    'NBC
+                        AABM_TAC(2)=145969*RelAbund(AABMfishery) - 138.18
+                    Else
+                    'SEAK
+                        AABM_TAC(2)=132404*RelAbund(AABMfishery) - 1501.3
+                    End If
+                End If
+
+                If AABMfishery=3 Then
+                    If RelAbund(AABMfishery) >= 0.5 Then
+                    'SEAK
+                        AABM_TAC(3)=149745*RelAbund(AABMfishery) + 16933 
+                   
+                    Elseif RelAbund(AABMfishery) >= 1.005 Then
+                    'WCVI
+                        AABM_TAC(3)=171119*RelAbund(AABMfishery) + 19.013
+                   
+                    Else
+                    'SEAK
+                        AABM_TAC(3)=128292*RelAbund(AABMfishery) + 14.072
+                    End If
+                End If
+
+        
+        Next AABMfishery
+
+    End Sub
+

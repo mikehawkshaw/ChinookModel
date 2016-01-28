@@ -1,1 +1,5 @@
 This is Where I'll keep my notes on changes made to the Chinook Model.
+
+I have built a function (SUB_APPLY_HCR.txt) That takes an abundance index and returns the appropriate TAC calculated based upon the tables in the June 2014 Version of the PST downloaded from the comission website.
+
+Next step is to figure out where/when to call this sub function and to make sure the TAC variable gets passed in and out properly
